@@ -240,7 +240,7 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <button
-                      class="btn btn-primary"
+                      class="btn btn-outline-primary"
                       @click="quantityUpdata(item.product.id, item.quantity + 1)"
                     >
                       +
@@ -249,13 +249,13 @@
                   <input
                     id="inlineFormInputGroupUsername"
                     type="text"
-                    class="form-control"
+                    class="form-control text-center"
                     :value="item.quantity"
                     @keyup.enter="quantityUpdata(item.product.id, $event.target.value)"
                   >
-                  <div class="input-group-prepend">
+                  <div class="input-group-append">
                     <button
-                      class="btn btn-primary"
+                      class="btn btn-outline-primary"
                       @click="quantityUpdata(item.product.id, item.quantity - 1)"
                     >
                       -
@@ -274,7 +274,7 @@
           <tfoot>
             <tr>
               <td
-                colspan="3"
+                colspan="4"
                 class="text-right"
               >
                 總計
@@ -285,7 +285,7 @@
             </tr>
             <tr v-if="coupon.enabled">
               <td
-                colspan="3"
+                colspan="4"
                 class="text-right text-success"
               >
                 折扣價

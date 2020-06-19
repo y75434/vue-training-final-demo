@@ -38,18 +38,20 @@
             >未起用</span>
           </td>
           <td>
-            <button
-              class="btn btn-outline-primary btn-sm"
-              @click="openCouponModal('edit', item)"
-            >
-              編輯
-            </button>
-            <button
-              class="btn btn-outline-danger btn-sm"
-              @click="openCouponModal('delete', item)"
-            >
-              刪除
-            </button>
+            <div class="btn-group">
+              <button
+                class="btn btn-outline-primary btn-sm"
+                @click="openCouponModal('edit', item)"
+              >
+                編輯
+              </button>
+              <button
+                class="btn btn-outline-danger btn-sm"
+                @click="openCouponModal('delete', item)"
+              >
+                刪除
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>

@@ -4,7 +4,8 @@
     <table class="table mt-4">
       <thead>
         <tr>
-          <th>路徑</th>
+          <th>圖片縮圖</th>
+          <th>操作</th>
         </tr>
       </thead>
       <tbody v-if="storages.length">
@@ -12,7 +13,13 @@
           v-for="(item, key) in storages"
           :key="key"
         >
-          <td>{{ item.path }}</td>
+          <td>
+            <img
+              :src="item.path"
+              width="100px"
+              class="img-fluid"
+            >
+          </td>
           <td>
             <div class="btn-group btn-group-sm">
               <button
@@ -26,6 +33,7 @@
         </tr>
       </tbody>
     </table>
+
 
     <Pagination
       :pages="pagination"

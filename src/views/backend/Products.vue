@@ -45,7 +45,7 @@
           </td>
           <td>
             <span
-              v-if="item.is_enabled"
+              v-if="item.enabled"
               class="text-success"
             >啟用</span>
             <span v-else>未啟用</span>
@@ -138,7 +138,7 @@
                 </div>
                 <img
                   class="img-fluid"
-                  :src="tempProduct.imageUrl"
+                  :src="tempProduct.imageUrl[0]"
                   alt
                 >
               </div>
@@ -204,18 +204,18 @@
                 <hr>
 
                 <div class="form-group">
-                  <label for="description">產品描述</label>
+                  <label for="description">產品說明</label>
                   <textarea
                     id="description"
                     v-model="tempProduct.description"
                     type="text"
                     class="form-control"
-                    placeholder="請輸入產品描述"
+                    placeholder="請輸入產品說明"
                     required
                   />
                 </div>
                 <div class="form-group">
-                  <label for="content">說明內容</label>
+                  <label for="content">產品描述</label>
                   <vue-editor
                     id="content"
                     v-model="tempProduct.content"
@@ -228,8 +228,6 @@
                       v-model="tempProduct.enabled"
                       class="form-check-input"
                       type="checkbox"
-                      :true-value="1"
-                      :false-value="0"
                     >
                     <label
                       class="form-check-label"
@@ -466,6 +464,13 @@ export default {
         if (response.status === 200) {
           this.tempProduct.imageUrl.push(response.data.data.path);
         }
+      }).catch(() => {
+        this.$bus.$emit('message:push',
+          `檔案上傳失敗惹，好糗Σ( ° △ °|||)︴
+          請檢查是不是檔案大小超過 2MB`,
+          'danger');
+
+        this.status.fileUploading = false;
       });
     },
   },
