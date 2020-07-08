@@ -95,7 +95,7 @@
 
 <script>
 /* global $ */
-import Pagination from '@/components/backend/Pagination.vue';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
   name: 'Storages',

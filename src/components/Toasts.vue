@@ -2,6 +2,7 @@
   <div style="position: fixed; top: 20px; right: 20px; min-width: 300px; z-index: 11000;">
     <div
       v-for="(item, i) in messages"
+      :id="`toast-${i}`"
       :key="i"
       class="toast fade show"
       role="alert"
@@ -22,6 +23,7 @@
           class="ml-2 mb-1 close"
           data-dismiss="toast"
           aria-label="Close"
+          @click="closeToast(`toast-${i}`)"
         >
           <span aria-hidden="true">&times;</span>
         </button>
@@ -34,6 +36,8 @@
 </template>
 
 <script>
+/* global $ */
+
 export default {
   name: 'Toasts',
   data() {
@@ -68,7 +72,10 @@ export default {
             vm.messages.splice(i, 1);
           }
         });
-      }, 5000);
+      }, 1000000);
+    },
+    closeToast(element) {
+      $(`#${element}`).toast('hide');
     },
   },
 };

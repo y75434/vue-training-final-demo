@@ -92,7 +92,8 @@
               id="exampleModalLabel"
               class="modal-title"
             >
-              <span>新增產品</span>
+              <span v-if="isNew">新增產品</span>
+              <span v-else>編輯 {{ tempProduct.title }} 產品</span>
             </h5>
             <button
               type="button"
@@ -315,7 +316,7 @@
 <script>
 /* global $ */
 import { VueEditor } from 'vue2-editor/dist/vue2-editor.core';
-import Pagination from '@/components/backend/Pagination.vue';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
   name: 'Products',
@@ -355,6 +356,16 @@ export default {
         this.isLoading = false;
       });
     },
+    getDetails(id) {
+      this.isLoading = true;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/product/${id}`;
+
+      this.$http.get(api).then((response) => {
+        this.tempProduct = response.data.data;
+        $('#productModal').modal('show');
+        this.isLoading = false;
+      });
+    },
     // 開啟 Modal 視窗
     openModal(isNew, item) {
       switch (isNew) {
@@ -368,11 +379,8 @@ export default {
           $('#productModal').modal('show');
           break;
         case 'edit':
-          this.tempProduct = Object.assign({}, item);
-
           this.isNew = false;
-
-          $('#productModal').modal('show');
+          this.getDetails(item.id);
           break;
         case 'delete':
           this.tempProduct = Object.assign({}, item);
