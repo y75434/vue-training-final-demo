@@ -137,15 +137,15 @@
               >
                 {{ tempProduct.origin_price }} 元
               </div>
-              <del
-                v-if="tempProduct.price"
-                class="h6"
-              >原價 {{ tempProduct.origin_price }} 元</del>
-              <div
-                v-if="tempProduct.price"
-                class="h4"
-              >
-                現在只要 {{ tempProduct.price }} 元
+              <div v-else>
+                <del
+                  class="h6"
+                >原價 {{ tempProduct.origin_price }} 元</del>
+                <div
+                  class="h4"
+                >
+                  現在只要 {{ tempProduct.price }} 元
+                </div>
               </div>
             </div>
             <select
