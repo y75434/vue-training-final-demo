@@ -173,7 +173,7 @@
                     <input
                       id="unit"
                       v-model="tempProduct.unit"
-                      type="unit"
+                      type="text"
                       class="form-control"
                       placeholder="請輸入單位"
                     >
