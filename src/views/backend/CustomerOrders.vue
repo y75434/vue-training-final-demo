@@ -363,7 +363,7 @@
           <div class="form-group">
             <validation-provider
               v-slot="{ errors, classes }"
-              rules="required"
+              rules="required|min:8"
             >
               <label for="tel">電話</label>
               <input
@@ -479,6 +479,7 @@ export default {
         tel: '',
         address: '',
         payment: '',
+        message: '',
       },
       cart: {},
       cartTotal: 0,
