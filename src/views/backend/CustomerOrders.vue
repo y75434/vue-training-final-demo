@@ -256,6 +256,7 @@
                   <div class="input-group-append">
                     <button
                       class="btn btn-outline-primary"
+                      :disabled="item.quantity === 1"
                       @click="quantityUpdata(item.product.id, item.quantity - 1)"
                     >
                       -
@@ -573,6 +574,9 @@ export default {
       });
     },
     quantityUpdata(id, num) {
+      // 避免商品數量低於 0 個
+      if (num <= 0) return;
+
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/ec/shopping`;
 
