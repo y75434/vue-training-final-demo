@@ -72,7 +72,7 @@ export default {
             vm.messages.splice(i, 1);
           }
         });
-      }, 1000000);
+      }, 5000);
     },
     closeToast(element) {
       $(`#${element}`).toast('hide');
